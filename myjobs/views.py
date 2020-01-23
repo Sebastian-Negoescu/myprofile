@@ -7,3 +7,10 @@ from .models import Job
 def home(request):
     jobs = Job.objects.all()
     return render(request, "home.html", {"jobs": jobs})
+
+def job_detail(request, id):
+    try:
+        job = Job.objects.get(id=id)
+    except Job.DoesNotExist:
+        raise Http404("Page not found.")
+    return render(request, "job_detail.html", {"job": job})

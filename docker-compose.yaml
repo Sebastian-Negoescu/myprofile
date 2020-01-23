@@ -3,6 +3,11 @@ version: '3'
 services:
     db:
         image: postgres
+        restart: always
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: 3Microsoft.
+            POSTGRES_DB: myprofiledb
     web:
         build: .
         command: python3 manage.py runserver 0.0.0.0:8000
